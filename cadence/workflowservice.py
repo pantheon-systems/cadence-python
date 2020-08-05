@@ -15,7 +15,8 @@ from cadence.cadence_types import PollForActivityTaskResponse, StartWorkflowExec
     DescribeWorkflowExecutionRequest, DescribeWorkflowExecutionResponse, QueryWorkflowRequest, QueryWorkflowResponse, \
     ResetStickyTaskListResponse, ResetStickyTaskListRequest, RespondQueryTaskCompletedRequest, \
     ListClosedWorkflowExecutionsResponse, ListClosedWorkflowExecutionsRequest, ListOpenWorkflowExecutionsRequest, \
-    ListOpenWorkflowExecutionsResponse, TerminateWorkflowExecutionRequest, SignalWithStartWorkflowExecutionRequest, \
+    ListOpenWorkflowExecutionsResponse, ListWorkflowExecutionsRequest, \
+    ListWorkflowExecutionsResponse, TerminateWorkflowExecutionRequest, SignalWithStartWorkflowExecutionRequest, \
     SignalWorkflowExecutionRequest, RequestCancelWorkflowExecutionRequest, RespondActivityTaskCanceledByIDRequest, \
     RespondActivityTaskCanceledRequest, RespondActivityTaskFailedByIDRequest, RespondActivityTaskFailedRequest, \
     RespondActivityTaskCompletedByIDRequest, RecordActivityTaskHeartbeatByIDRequest, \
@@ -152,6 +153,10 @@ class WorkflowService:
     def list_closed_workflow_executions(self, request: ListClosedWorkflowExecutionsRequest) -> \
             Tuple[ListClosedWorkflowExecutionsResponse, object]:
         return self.call_return("ListClosedWorkflowExecutions", request, ListClosedWorkflowExecutionsResponse)
+
+    def list_workflow_executions(self, request: ListWorkflowExecutionsRequest) -> \
+            Tuple[ListWorkflowExecutionsResponse, object]:
+        return self.call_return("ListWorkflowExecutions", request, ListWorkflowExecutionsResponse)
 
     def respond_query_task_completed(self, request: RespondQueryTaskCompletedRequest) -> Tuple[None, object]:
         return self.call_void("RespondQueryTaskCompleted", request)
